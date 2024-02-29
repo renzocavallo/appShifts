@@ -2,7 +2,7 @@ import React from "react"
 
 export const Input = ({ struct: { input }, hook, set }) => {
     const year = new Date().getFullYear()
-    const minDate = new Date().toISOString().split('T')[0];
+    const minDate = new Date().toISOString().split('T')[0]
 
     const inputProps = {
         type: input.type,

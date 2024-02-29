@@ -1,11 +1,11 @@
 import React from 'react'
-import { PageLogin } from './pages/login/pageLogin'
+import { Router } from './router/router'
 
 function App() {
   return (
     <>
       <h1>appShifts</h1>
-      <PageLogin/>
+      <Router/>
     </>
   )
 }
