@@ -1,16 +1,10 @@
 import React , { useState }from "react"
 import { Input } from "../../components/input/input"
+import { handleStateChange } from "../../utils/helpers/changeState"
 import { loginInputs } from "./structs"
 
 export const PageLogin = () => {
     const [formData, setFormData] = useState({legajo:"", password:""})
-
-    const handleStateChange = (name, value) =>{
-        setFormData( prevData => ({
-            ...prevData,
-            [name]:value
-            }))
-    }
 
     const handleSubmit = (e) =>{
         e.preventDefault()
@@ -28,7 +22,7 @@ export const PageLogin = () => {
                             <Input
                                 struct={lAndI}
                                 hook={formData}
-                                set={newState=>handleStateChange(lAndI.input.name, newState)}
+                                set={newState=>handleStateChange(lAndI.input.name, newState, setFormData)}
                             />
                         </div>
                     )

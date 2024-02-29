@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
 export const Input = ({ struct: { input }, hook, set }) => {
-    const year = new Date().getFullYear();
+    const year = new Date().getFullYear()
     const minDate = new Date().toISOString().split('T')[0];
 
     const inputProps = {
@@ -23,7 +23,7 @@ export const Input = ({ struct: { input }, hook, set }) => {
         </>
     ) : (
         <input type={inputProps.type} value={input.text} />
-    );
+    )
 
-    return inputElement;
-};
+    return inputElement
+}
