@@ -1,37 +1,29 @@
-import React from "react"
+import React from "react";
 
-export const Input = (props) => {
-    const {label, input} = props.struct
-    const year = new Date().getFullYear()
+export const Input = ({ struct: { input }, hook, set }) => {
+    const year = new Date().getFullYear();
+    const minDate = new Date().toISOString().split('T')[0];
 
     const inputProps = {
-        label: label.text,
         type: input.type,
-        ...(input.type === "date" && { min: new Date().toISOString().split('T')[0] }),
+        name: input.name,
+        id: input.id,
+        value: hook.value,
+        onChange: (e) => set(e.target.value),
+        ...(input.type === "date" && { min: minDate }),
         ...(input.type === "number" && { min: year - 1, max: year }),
-        ...(["password", "text", "email"].includes(input.type) && { placeholder: input.placeholder })
-    }
+        ...(["password", "text", "email"].includes(input.type) && { placeholder: input.text })
+    };
 
-    return (
+    const inputElement = inputProps.type !== "submit" ? (
         <>
-            {
-                (input.type !== "submit") &&
-                <>
-                    <label
-                        htmlFor={input.id}
-                    >
-                        {inputProps.label}
-                    </label>
-                    <br/>
-                </>
-            }
-            <input 
-                id={input.id}
-                name={input.name}
-                value={props.hook.value}
-                onChange={(e)=>{props.set(e.target.value)}}
-                {...inputProps} 
-            />
+            <label htmlFor={inputProps.id}>{input.text}</label>
+            <br />
+            <input {...inputProps} />
         </>
-    )
-}
+    ) : (
+        <input type={inputProps.type} value={input.text} />
+    );
+
+    return inputElement;
+};
