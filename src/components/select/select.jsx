@@ -1,11 +1,9 @@
 import React from "react"
 
-export const Select = ({ options, hook, set }) => {
+export const Select = ({ struct:{options}, hook, set, text }) => {
   const selectProps = {
-    value: hook,
-    onChange: (e) => {
-      set(e.target.value)
-    }
+    value: hook.value,
+    onChange: (e) => {set(parseInt(e.target.value))}
   }
 
   const optionElements = options.map((opt, index) => (
@@ -15,8 +13,13 @@ export const Select = ({ options, hook, set }) => {
   ))
 
   return (
-    <select {...selectProps}>
-      {optionElements}
-    </select>
+    <>
+      <label>{text}</label>
+      <br/>
+      <select {...selectProps}>
+        {optionElements}
+      </select>
+      <br/>
+    </>
   )
 }

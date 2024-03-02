@@ -14,14 +14,12 @@ export const PageRegister = () => {
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 {
                     inputsRegister.map((inp, index) =>
-                        <div key={index}>
-                            <Input struct={inp} hook={formData}
-                                set={newState=>handleStateChange(inp.input.name, newState, setFormData)}
-                            />
-                        </div>
+                        <Input struct={inp} hook={formData} key={index}
+                            set={newState=>handleStateChange(inp.input.name, newState, setFormData)}
+                        />
                     )
                 }
             </form>

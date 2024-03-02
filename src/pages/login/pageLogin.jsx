@@ -14,15 +14,12 @@ export const PageLogin = () => {
 
     return(
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="off">
                 {
                     loginInputs.map((lInp, index)=>
-                        <div key={index}>
-                            <Input
-                                struct={lInp} hook={formData}
-                                set={newState=>handleStateChange(lInp.input.name, newState, setFormData)}
-                            />
-                        </div>
+                        <Input struct={lInp} hook={formData} key={index}
+                            set={newState=>handleStateChange(lInp.input.name, newState, setFormData)}
+                        />
                     )
                 }
             </form>
